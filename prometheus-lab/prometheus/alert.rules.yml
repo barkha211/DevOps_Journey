@@ -1,0 +1,11 @@
+groups:
+- name: node-alerts
+  rules:
+  - alert: NodeDown
+    expr: up == 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Node is down"
+      description: "Node {{ $labels.instance }} is not reachable for more than 1 minute."
